@@ -1,22 +1,18 @@
-repeat = int(input())
-lectures = []
-for _ in range(repeat):
-    temp = tuple(map(int, input().split(" ")))
-    append = lectures.append
-    append(temp)
+import sys 
+N = int(sys.stdin.readline()) 
+time = sorted([tuple(map(int, sys.stdin.readline().split())) for _ in range(N)], key=lambda x:(x[1], x[0])) 
+# time = [[0]*2 for _ in range(N)] 
+# for i in range(N): 
+#     s, e = map(int, sys.stdin.readline().split()) 
+#     time[i][0] = s 
+#     time[i][1] = e 
+# time.sort(key = lambda x: (x[1], x[0])) 
+# 위 주석이 3번줄 내용과 같다.
 
-lectures.sort(key=lambda x: (x[1], x[0]))
+cnt, end_time = 1, time[0][1]
+for start, end in time:
+    if start >= end_time:
+        cnt += 1
+        end_time = end
 
-classes = 1
-
-end = lectures[0][1]
-while 1:
-    if len(lectures) == 1:
-        break    
-    for i in range(len(lectures)):
-        if lectures[i][0] >= end:
-            end = lectures[i][1]
-            lectures = lectures[i:]
-            classes += 1
-            break
-print(classes)
+print(cnt)
