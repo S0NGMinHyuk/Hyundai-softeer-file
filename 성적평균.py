@@ -5,13 +5,13 @@ score = list(map(int, sys.stdin.readline().split()))
 
 for _ in range(cycle):
     a, b = map(int, sys.stdin.readline().split())
-    # 성적을 더할 범위 a, b 를 받음
+    # 성적을 더할 범위 a, b 변수
 
     total = 0
     for i in range(a-1, b):
         total += score[i]
-    # total = a, b 사이의 성적 합
+    # total = a, b 사이의 성적 총합
 
     total = total / (b -a +1)
     print("%.2f" % total)
-    # total 값이 평균이 되도록 나누고 소수점 3자리에서 반올림과 출력
+    # total 값이 평균이 되도록 나누고 소수점 3자리에서 반올림+출력
